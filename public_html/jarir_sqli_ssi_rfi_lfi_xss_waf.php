@@ -48,8 +48,36 @@ $ssiPatterns = [
     '/<!--#echo/i',
     '/<!--#flastmod/i',
     '/<!--#fsize/i',
+    '/<\s*svg/i',
+    '/onload/i',
+    '/onclick/i',
+    '/\beval\b/i',
+    '/\batob\b/i',
+    '/<\s*img/i',
+    '/<\s*a/i',
+    '/\bprompt\b/i',
+    '/\bwindow\b/i',
+    '/\blocation\b/i',
+    '/<\s*audio/i',
+    '/<\s*video/i',
+    '/<\s*object/i',
+    '/<\s*title/i',
+    '/<\s*html/i',
+    '/<\s*body/i',
+    '/</i', // Less than sign
+    '/>/i', // Greater than sign
+    '/<\\/i', // Closing tag (with backslash)
+    '/\balert\b/i',
+    '/<\s*applet/i',
+    '/<\s*div/i',
+    '/<\s*frameset/i',
+    '/<\s*script/i',
+    '/<\s*style/i',
+    '/\bxss\b/i',
+    '/\bexpression\b/i',
+    '/\bls\b/i',
+    '/\bla\b/i',
 ];
-
 foreach ($ssiPatterns as $pattern) {
     if (preg_match($pattern, $_SERVER['REQUEST_URI'])) {
         logIPs($ip, 'Blocked SSI attempt');
@@ -117,7 +145,7 @@ if (preg_match('/(<|>|script)/i', $_SERVER['QUERY_STRING'])) {
 
 // Block SQL Injection attempts
 $keywords = array(
-    'SELECT', 'UNION', 'INSERT', 'UPDATE', 'DELETE', 'FROM', 'WHERE',
+    'SELECT', 'UNION', 'INSERT', 'UPDATE', 'DELETE', 'FROM', 'WHERE','<svg',
     'DROP', 'CREATE', 'ALTER', 'MAKE_SET', 'EXPORT_SET', 'INFORMATION_SCHEMA',
     'TABLE_NAME', 'COLUMN_NAME', '\'', '\-','\"', '\*', '\+', '\!', '@', ':', 'ORDER BY','JSON_LENGTH','%20','@@version
 ','version','version()','@@version','distinctrow','make_set','hex','unhex','bin','md5','sha1','like','concat','group_concat','group','50000','sel/**/ect','uni/**/on','limit','\'','%27'
