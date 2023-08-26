@@ -2,7 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     include "config.php";
     session_start();
-    
+
     // Redirect to the dashboard if the user is already logged in
     if (isset($_SESSION["username"])) {
         header("Location: https://news478.000webhostapp.com/admin/post.php");
@@ -22,6 +22,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if (mysqli_num_rows($result) > 0) {
                 $row = mysqli_fetch_assoc($result);
+
+                // Generate a random session token
+                $sessionToken = bin2hex(random_bytes(32));
+
+        $updateTokenSql = "UPDATE user SET session_token = '{$sessionToken}' WHERE user_id = '{$row['user_id']}'";
+        $updateTokenResult = mysqli_query($conn, $updateTokenSql);
+
+        if ($updateTokenResult === false) {
+        die("Token Update Failed: " . mysqli_error($conn));
+        }
+
+        mysqli_query($conn, $updateTokenSql) or die("Token Update Failed.");
+
+
+                // Store the session token in a secure cookie
+                setcookie("session_token", $sessionToken, 0, "/", "", true, true);
+
                 $_SESSION["username"] = $row['username'];
                 $_SESSION["user_id"] = $row['user_id'];
                 $_SESSION["user_role"] = $row['role'];
@@ -35,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
 
 <!doctype html>
 <html>
