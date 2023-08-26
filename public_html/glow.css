@@ -1,0 +1,156 @@
+/* Add this to your styles.css file */
+.glow-text {
+    font-size: 24px; /* Set your desired font size */
+    color: red; /* Set your default text color */
+    transition: color 0.3s, text-shadow 0.3s; /* Add a smooth transition effect */
+
+    /* Create a glow effect using text-shadow */
+    text-shadow: 0 0 10px red; /* Set the glow color and size (adjust as needed) */
+}
+
+.glow-text:hover {
+    color: red; /* Change text color on hover */
+    text-shadow: 0 0 20px red; /* Increase the glow size on hover */
+}
+
+/* Add this to your styles.css file */
+.glow-text-blue {
+    font-size: 24px; /* Set your desired font size */
+    color: blue; /* Set your default text color */
+    transition: color 0.3s, text-shadow 0.3s; /* Add a smooth transition effect */
+
+    /* Create a glow effect using text-shadow */
+    text-shadow: 0 0 10px blue; /* Set the glow color and size (adjust as needed) */
+}
+
+.glow-text-blue:hover {
+    color: blue; /* Change text color on hover */
+    text-shadow: 0 0 20px blue; /* Increase the glow size on hover */
+}
+
+/* Add this to your styles.css file */
+.glow-text-green {
+    font-size: 40px; /* Set your desired font size */
+    color: green; /* Set your default text color */
+    transition: color 0.3s, text-shadow 0.3s; /* Add a smooth transition effect */
+
+    /* Create a glow effect using text-shadow */
+    text-shadow: 0 0 10px green; /* Set the glow color and size (adjust as needed) */
+}
+
+.glow-text-green:hover {
+    color: green; /* Change text color on hover */
+    text-shadow: 0 0 20px green; /* Increase the glow size on hover */
+}
+.glow-text-orange {
+    font-size: 24px; /* Set your desired font size */
+    color: orange; /* Set your default text color */
+    transition: color 0.3s, text-shadow 0.3s; /* Add a smooth transition effect */
+
+    /* Create a glow effect using text-shadow */
+    text-shadow: 0 0 10px orange; /* Set the glow color and size (adjust as needed) */
+}
+
+.glow-text-orange:hover {
+    color: orange; /* Change text color on hover */
+    text-shadow: 0 0 20px orange; /* Increase the glow size on hover */
+}
+
+.glow-text-white {
+    font-size: 24px; /* Set your desired font size */
+    color: white; /* Set your default text color */
+    transition: color 0.3s, text-shadow 0.3s; /* Add a smooth transition effect */
+
+    /* Create a glow effect using text-shadow */
+    text-shadow: 0 0 10px white; /* Set the glow color and size (adjust as needed) */
+}
+
+.glow-text-white:hover {
+    color: white; /* Change text color on hover */
+    text-shadow: 0 0 20px white; /* Increase the glow size on hover */
+}
+.skills-all{
+  margin-bottom: 10px;
+  color:blue;
+}
+/* CSS to increase text size */
+.bigger-text {
+    font-size: 24px; /* You can adjust the size as needed */
+}
+ /* Center element horizontally */
+.center-element {
+    margin: 0 auto;
+    width: 200px; /* Set a width for demonstration */
+}
+.contact__button-container {
+    display: flex;
+    justify-content: space-between;
+}
+.contact__buttonz {
+    display: flex;
+    justify-content: space-between;
+}
+.contact__buttons {
+    text-align: right; /* Align buttons to the right */
+}
+
+.contact__button {
+    margin-left: 10px; /* Add some space between the buttons */
+}
+.glow-text-whites {
+    font-size: 24px; /* Set your desired font size */
+    color: white; /* Set your default text color */
+    transition: color 1s, text-shadow 1s; /* Add a smooth transition effect */
+
+    /* Create a glow effect using text-shadow */
+    text-shadow: 0 0 0px white; /* Set the glow color and size (adjust as needed) */
+}
+
+.glow-text-whites:hover {
+    color: white; /* Change text color on hover */
+    text-shadow: 0 0 0px white; /* Increase the glow size on hover */
+}
+.button-container-left {
+    text-align: left;
+}
+
+.contact__buttonsz {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-conttainer-left {
+  float: right;
+}
+.contact__buttonsx{
+  display: flex;
+  justify-content: center;
+}
+.contact__buttonsp {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.contact__buttons > div:first-child {
+  margin-top: 0;
+}
+.contact__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+body {
+    background-image: url('bgsmall.jpg');
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: center center; /* Center the image */
+}
