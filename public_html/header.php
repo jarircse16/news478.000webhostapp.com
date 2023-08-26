@@ -1,55 +1,108 @@
 <?php
-  //echo "<h1>" .  . "</h1>";
-  include "config.php";
-  $page = basename($_SERVER['PHP_SELF']);
-  switch($page){
+error_reporting(0);
+
+include "config.php";
+
+$page = basename($_SERVER['PHP_SELF']);
+
+switch ($page) {
     case "single.php":
-      if(isset($_GET['id'])){
-        $sql_title = "SELECT * FROM post WHERE post_id = {$_GET['id']}";
-        $result_title = mysqli_query($conn,$sql_title) or die("Tile Query Failed");
-        $row_title = mysqli_fetch_assoc($result_title);
-        $page_title = $row_title['title'];
-      }else{
-        $page_title = "No Post Found";
-      }
-      break;
+        if (isset($_GET['id'])) {
+            $id = $_GET['id']; // Get the 'id' from the query string
+
+            // Check if 'id' is not a positive integer
+            if (!is_numeric($id) || $id <= 0) {
+                header("Location: index.php");
+                exit; // Exit after redirect
+            }
+
+            $sql_title = "SELECT * FROM post WHERE post_id = $id";
+            $result_title = mysqli_query($conn, $sql_title);
+
+            if (!$result_title) {
+                header("Location: index.php");
+                exit; // Exit after redirect
+            }
+
+            $row_title = mysqli_fetch_assoc($result_title);
+            $page_title = $row_title['title'];
+        } else {
+            $page_title = "No Post Found";
+        }
+        break;
+
     case "category.php":
-      if(isset($_GET['cid'])){
-        $sql_title = "SELECT * FROM category WHERE category_id = {$_GET['cid']}";
-        $result_title = mysqli_query($conn,$sql_title) or die("Tile Query Failed");
-        $row_title = mysqli_fetch_assoc($result_title);
-        $page_title = $row_title['category_name'] . " News";
-      }else{
-        $page_title = "No Post Found";
-      }
-      break;
+        if (isset($_GET['cid'])) {
+            $cid = $_GET['cid'];
+            // Check if 'id' is not a positive integer
+            if (!is_numeric($cid) || $cid <= 0) {
+                header("Location: index.php");
+                exit; // Exit after redirect
+            }
+
+            $sql_title = "SELECT * FROM category WHERE category_id = {$_GET['cid']}";
+            $result_title = mysqli_query($conn, $sql_title);
+
+            if (!$result_title) {
+                header("Location: index.php");
+                exit; // Exit after redirect
+            }
+
+            $row_title = mysqli_fetch_assoc($result_title);
+            $page_title = $row_title['category_name'] . " News";
+        } else {
+            $page_title = "No Post Found";
+        }
+        break;
+
     case "author.php":
-      if(isset($_GET['aid'])){
-        $sql_title = "SELECT * FROM user WHERE user_id = {$_GET['aid']}";
-        $result_title = mysqli_query($conn,$sql_title) or die("Tile Query Failed");
-        $row_title = mysqli_fetch_assoc($result_title);
-        $page_title = "News By " .$row_title['first_name'] . " " . $row_title['last_name'];
-      }else{
-        $page_title = "No Post Found";
-      }
-      break;
+        if (isset($_GET['aid'])) {
+            $aid = $_GET['aid'];
+            // Check if 'id' is not a positive integer
+            if (!is_numeric($aid) || $aid <= 0) {
+                header("Location: index.php");
+                exit; // Exit after redirect
+            }
+
+            $sql_title = "SELECT * FROM user WHERE user_id = {$_GET['aid']}";
+            $result_title = mysqli_query($conn, $sql_title);
+
+            if (!$result_title) {
+                header("Location: index.php");
+                exit; // Exit after redirect
+            }
+
+            $row_title = mysqli_fetch_assoc($result_title);
+            $page_title = "News By " . $row_title['first_name'] . " " . $row_title['last_name'];
+        } else {
+            $page_title = "No Post Found";
+        }
+        break;
+
     case "search.php":
-      if(isset($_GET['search'])){
+        if (isset($_GET['search'])) {
+            $page_title = $_GET['search'];
+        } else {
+            $page_title = "No Search Result Found";
+        }
+        break;
 
-        $page_title = $_GET['search'];
-      }else{
-        $page_title = "No Search Result Found";
-      }
-      break;
-    default :
-      $sql_title = "SELECT websitename FROM settings";
-      $result_title = mysqli_query($conn,$sql_title) or die("Tile Query Failed");
-      $row_title = mysqli_fetch_assoc($result_title);
-      $page_title = $row_title['websitename'];
-      break;
-  }
+    default:
+        $sql_title = "SELECT websitename FROM settings";
+        $result_title = mysqli_query($conn, $sql_title);
 
+        if (!$result_title) {
+            header("Location: index.php");
+            exit; // Exit after redirect
+        }
+
+        $row_title = mysqli_fetch_assoc($result_title);
+        $page_title = $row_title['websitename'];
+        break;
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
